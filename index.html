@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lightning⚡ — Discord Bot Developer xd</title>
+  <title>Lightning⚡ — Discord Bot Developer</title>
   <meta name="description" content="Minimalne portfolio Discord Bot Developera — boty na zamówienie, automatyzacje, wdrożenia i utrzymanie." />
 
   <style>
@@ -19,10 +19,10 @@
 
       --border:rgba(255,255,255,.08);
       --shadow:0 18px 60px rgba(0,0,0,.45);
+      --shadow2: 0 20px 70px rgba(0,0,0,.55);
       --radius:18px;
     }
 
-    /* Base */
     *{box-sizing:border-box;min-width:0}
     html{-webkit-text-size-adjust:100%}
     body{
@@ -30,19 +30,20 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
       background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(255,216,77,.16), transparent 55%),
-        radial-gradient(900px 600px at 85% 30%, rgba(255,183,3,.10), transparent 55%),
+        radial-gradient(1100px 700px at 12% 12%, rgba(255,216,77,.18), transparent 55%),
+        radial-gradient(900px 620px at 88% 22%, rgba(255,183,3,.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(255,216,77,.08), transparent 60%),
         linear-gradient(180deg,#050615,#070914 40%,#050615);
       overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
-    .container{max-width:980px;margin:0 auto;padding:24px}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
 
     /* NAV */
     .nav{
       position:sticky;top:0;z-index:20;
       backdrop-filter:blur(10px);
-      background:rgba(7,9,20,.6);
+      background:rgba(7,9,20,.62);
       border-bottom:1px solid var(--border);
     }
     .nav-inner{
@@ -90,16 +91,17 @@
     .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}
     .btn.primary{
       border-color:rgba(255,216,77,.6);
-      background:linear-gradient(135deg, rgba(255,216,77,.95), rgba(255,183,3,.65));
+      background:linear-gradient(135deg, rgba(255,216,77,.95), rgba(255,183,3,.70));
       box-shadow:0 18px 55px rgba(255,183,3,.45);
       color:#0b1024;
       font-weight:900;
     }
+    .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
     /* Cards + sections */
     section{padding:18px 0}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -108,8 +110,8 @@
     }
 
     /* HERO */
-    .hero{padding:42px 0 10px}
-    .hero-card{padding:26px}
+    .hero{padding:46px 0 8px}
+    .hero-card{padding:28px}
     .kicker{
       display:inline-flex;gap:10px;align-items:center;
       padding:8px 12px;border-radius:999px;
@@ -177,6 +179,16 @@
       color:var(--muted);
       line-height:1;
     }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,216,77,.35);
+      background:rgba(255,216,77,.10);
+      color:rgba(255,216,77,.95);
+      font-size:12px;font-weight:900;
+      line-height:1;
+      white-space:nowrap;
+    }
 
     /* STATUS */
     .status{
@@ -208,8 +220,14 @@
     .feature-card{
       border:1px solid var(--border);
       background:rgba(255,255,255,.03);
-      border-radius:14px;
-      padding:12px;
+      border-radius:16px;
+      padding:14px;
+      transition:.18s ease;
+    }
+    .feature-card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+      border-color:rgba(255,255,255,.12);
     }
     .feature-card b{display:block;margin-bottom:8px}
     .feature-tags{display:flex;gap:10px;flex-wrap:wrap}
@@ -220,6 +238,42 @@
     /* PRICING */
     @media (max-width:900px){
       #pricingGrid{grid-template-columns:1fr !important;}
+    }
+    .priceRow{
+      margin-top:10px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .priceMain{
+      font-size:22px;
+      font-weight:950;
+      letter-spacing:-.2px;
+    }
+    .priceSub{
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+    .miniList{
+      margin-top:10px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:13px;
+    }
+    .miniList .dot{
+      display:inline-block;
+      width:7px;height:7px;border-radius:99px;
+      background:rgba(255,216,77,.85);
+      margin-right:8px;
+      transform:translateY(-1px);
+    }
+    .glow{
+      border-color:rgba(255,216,77,.35) !important;
+      box-shadow:0 22px 80px rgba(255,183,3,.18);
+      background:linear-gradient(180deg, rgba(255,216,77,.10), rgba(255,255,255,.02));
     }
 
     /* MODALS */
@@ -245,8 +299,12 @@
       padding:12px;
       outline:none;
     }
-    .textarea{min-height:110px;resize:vertical}
-    .hint{color:var(--muted);font-size:12px;line-height:1.55;margin-top:8px}
+    .input:focus, .textarea:focus{
+      border-color:rgba(255,216,77,.40);
+      box-shadow:0 0 0 4px rgba(255,216,77,.10);
+    }
+    .textarea{min-height:120px;resize:vertical}
+    .hint{color:var(--muted);font-size:12px;line-height:1.55;margin-top:10px}
     .ok{color:#b7f7c8}
     .warn{color:#ffd6a5}
 
@@ -270,6 +328,7 @@
       .kicker{font-size:12px}
       .tag{padding:7px 9px;font-size:11px}
       .bar{height:10px}
+      .priceMain{font-size:20px}
     }
   </style>
 </head>
@@ -305,7 +364,8 @@
           Wdrożenie + utrzymanie — jeśli chcesz, biorę to na siebie.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="https://discord.gg/72MHB8DDaJ" target="_blank" rel="noreferrer">Napisz na Discord</a>
+          <a class="btn primary" href="#pricing">Zobacz pakiety</a>
+          <a class="btn" href="https://discord.gg/72MHB8DDaJ" target="_blank" rel="noreferrer">Kontakt (Discord)</a>
           <a class="btn" href="https://github.com/twojprofil" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
@@ -407,12 +467,16 @@
     <!-- PRICING -->
     <section id="pricing">
       <div class="card" style="padding:18px">
-        <h2 style="margin:0 0 10px">Cennik</h2>
-        <p style="margin:0 0 14px; color:var(--muted); line-height:1.7">
-          Wybierz pakiet → Szczegóły → Zamów (kopiuj lub wyślij webhook).
-        </p>
+        <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-end">
+          <div>
+            <h2 style="margin:0 0 8px">Cennik</h2>
+            <p style="margin:0; color:var(--muted); line-height:1.7">
+              Wybierz pakiet → Szczegóły → Zamów (zamówienie leci prosto na Discord).
+            </p>
+          </div>
+        </div>
 
-        <div id="pricingGrid" class="grid" style="grid-template-columns:repeat(3,1fr)"></div>
+        <div id="pricingGrid" class="grid" style="grid-template-columns:repeat(3,1fr); margin-top:14px"></div>
       </div>
     </section>
 
@@ -431,15 +495,17 @@
   <!-- MODAL: DETAILS -->
   <div id="modalDetails">
     <div class="modalBackdrop" data-close="details"></div>
-    <div class="card" style="position:relative;max-width:720px;width:100%;padding:18px;z-index:1">
+    <div class="card" style="position:relative;max-width:760px;width:100%;padding:18px;z-index:1">
       <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
         <div>
+          <div id="detailsBadgeWrap" style="margin-bottom:8px"></div>
           <h3 id="detailsTitle" style="margin:0 0 6px"></h3>
           <div id="detailsPrice" style="color:var(--muted);font-weight:800"></div>
         </div>
         <button class="btn" data-close="details">Zamknij</button>
       </div>
 
+      <div id="detailsMeta" style="margin-top:10px;color:var(--muted);line-height:1.7"></div>
       <div id="detailsFeatures" style="margin-top:12px;color:var(--muted);line-height:1.7"></div>
 
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
@@ -451,9 +517,10 @@
   <!-- MODAL: ORDER -->
   <div id="modalOrder">
     <div class="modalBackdrop" data-close="order"></div>
-    <div class="card" style="position:relative;max-width:720px;width:100%;padding:18px;z-index:1">
+    <div class="card" style="position:relative;max-width:760px;width:100%;padding:18px;z-index:1">
       <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
         <div>
+          <div id="orderBadgeWrap" style="margin-bottom:8px"></div>
           <h3 id="orderTitle" style="margin:0 0 6px">Zamówienie</h3>
           <div id="orderMeta" style="color:var(--muted);font-weight:800"></div>
         </div>
@@ -484,8 +551,7 @@
       </div>
 
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button id="copyOrderBtn" class="btn primary">Kopiuj zamówienie</button>
-        <button id="webhookOrderBtn" class="btn">Wyślij webhook</button>
+        <button id="webhookOrderBtn" class="btn primary">Zamów</button>
       </div>
 
       <div id="orderStatus" class="hint"></div>
@@ -505,14 +571,16 @@
       });
     });
 
-    // ================= PACKAGES =================
+    // ================= PAKIETY (DOSTOSOWANE CENY) =================
     const packages = [
       {
         id: "starter",
-        label: "Start",
+        label: "Starter",
         emoji: "🌱",
-        price: 25,
-        psc: 35,
+        price: 29,
+        psc: 39,
+        bestFor: "Start serwera • podstawowa automatyzacja",
+        highlights: ["Szybka konfiguracja", "Czytelny panel", "Stabilne działanie"],
         features: [
           "Komendy administracyjne",
           "Statystyki serwera",
@@ -526,10 +594,12 @@
         id: "standard",
         label: "Standard",
         emoji: "⚙️",
-        price: 45,
-        psc: 50,
+        price: 49,
+        psc: 59,
+        bestFor: "Serwery społecznościowe • porządek i bezpieczeństwo",
+        highlights: ["Lepsza moderacja", "Ochrona przed reklamą", "Więcej automatyzacji"],
         features: [
-          "Wszystko z pakietu Start",
+          "Wszystko z pakietu Starter",
           "Antylink i antyreklama",
           "Konkursy",
           "Logi moderacyjne"
@@ -539,22 +609,27 @@
         id: "advanced",
         label: "Zaawansowany",
         emoji: "🚀",
-        price: 75,
-        psc: 85,
+        price: 79,
+        psc: 89,
+        bestFor: "Aktywne serwery • support i rozbudowa",
+        highlights: ["System ticketów", "Ankiety", "Rozbudowane logi"],
         features: [
           "Wszystko z pakietu Standard",
           "Tickety",
           "Ankiety",
           "Logi serwerowe",
           "System boostowania"
-        ]
+        ],
+        badge: "⭐ Najczęściej wybierany"
       },
       {
         id: "business",
         label: "Biznes",
         emoji: "💼",
-        price: 100,
-        psc: 120,
+        price: 119,
+        psc: 139,
+        bestFor: "Usługi • zamówienia • profesjonalna obsługa",
+        highlights: ["Opinie klientów", "Sticky messages", "System losowań"],
         features: [
           "Tickety",
           "Legit check",
@@ -568,15 +643,18 @@
         id: "commerce",
         label: "Sklep",
         emoji: "🛒",
-        price: 120,
-        psc: 140,
+        price: 149,
+        psc: 169,
+        bestFor: "Sklepy Discord • automatyzacja sprzedaży",
+        highlights: ["Cenniki", "Ping menu", "Dane płatności auto"],
         features: [
           "Wszystko z pakietu Biznes",
           "Cenniki",
           "Ping menu",
           "Automatyczne dane płatności",
           "Logi ticketów"
-        ]
+        ],
+        badge: "🔥 Najlepsza wartość"
       },
       {
         id: "enterprise",
@@ -584,13 +662,15 @@
         emoji: "🧩",
         price: null,
         psc: null,
-        customPriceText: "💸 Cena: do ustalenia",
+        bestFor: "Nietypowe wymagania • integracje • duże projekty",
+        highlights: ["Integracje API", "Hosting", "Wsparcie premium"],
         features: [
           "System szyty na miarę",
           "Hosting",
           "Wsparcie techniczne",
           "Dowolne integracje"
-        ]
+        ],
+        customPriceText: "💸 Cena: Do ustalenia (wycena po wymaganiach)"
       }
     ];
 
@@ -598,12 +678,15 @@
     const modalDetails = document.getElementById("modalDetails");
     const detailsTitle = document.getElementById("detailsTitle");
     const detailsPrice = document.getElementById("detailsPrice");
+    const detailsMeta = document.getElementById("detailsMeta");
     const detailsFeatures = document.getElementById("detailsFeatures");
     const detailsOrderBtn = document.getElementById("detailsOrderBtn");
+    const detailsBadgeWrap = document.getElementById("detailsBadgeWrap");
 
     const modalOrder = document.getElementById("modalOrder");
     const orderMeta = document.getElementById("orderMeta");
-    const copyOrderBtn = document.getElementById("copyOrderBtn");
+    const orderTitle = document.getElementById("orderTitle");
+    const orderBadgeWrap = document.getElementById("orderBadgeWrap");
     const webhookOrderBtn = document.getElementById("webhookOrderBtn");
     const orderStatus = document.getElementById("orderStatus");
 
@@ -645,42 +728,10 @@
         : `💸 ${p.price} PLN • 💳 PSC: ${p.psc} PLN`;
     }
 
-    function buildOrderText(pack, extra){
-      const pr = pack.id === "enterprise"
+    function orderPriceForWebhook(p){
+      return p.id === "enterprise"
         ? "Cena: do ustalenia"
-        : `Cena: ${pack.price} PLN | PSC: ${pack.psc} PLN`;
-
-      return [
-        "⚡ ZAMÓWIENIE BOTA",
-        `📦 Pakiet: ${pack.label} (${pack.id})`,
-        `💸 ${pr}`,
-        "",
-        "📌 Dane:",
-        `• Nick/ID: ${extra.user || "—"}`,
-        `• Serwer: ${extra.guild || "—"}`,
-        `• Termin: ${extra.deadline || "—"}`,
-        "",
-        "📝 Opis:",
-        (extra.desc || "—"),
-        "",
-        "✅ Funkcje pakietu:",
-        "• " + pack.features.join("\n• ")
-      ].join("\n");
-    }
-
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        return true;
-      } catch {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        const ok = document.execCommand("copy");
-        ta.remove();
-        return ok;
-      }
+        : `Cena: ${p.price} PLN | PSC: ${p.psc} PLN`;
     }
 
     // ✅ Cloudflare Pages Functions endpoint (ten sam host): /order
@@ -690,7 +741,7 @@
       const payload = {
         packId: pack.id,
         packLabel: pack.label,
-        priceLine: priceLine(pack),
+        priceLine: orderPriceForWebhook(pack),
         user: extra.user,
         guild: extra.guild,
         deadline: extra.deadline,
@@ -711,25 +762,78 @@
       return true;
     }
 
+    function getExtra(){
+      return {
+        user: fUser.value.trim(),
+        guild: fGuild.value.trim(),
+        desc: fDesc.value.trim(),
+        deadline: fDeadline.value.trim(),
+      };
+    }
+
+    function resetOrderForm(){
+      fUser.value = "";
+      fGuild.value = "";
+      fDesc.value = "";
+      fDeadline.value = "";
+      hpWebsite.value = "";
+    }
+
     // ================= PRICING RENDER =================
     const grid = document.getElementById("pricingGrid");
+
+    function makeHighlightsHTML(arr){
+      if (!Array.isArray(arr) || arr.length === 0) return "";
+      return `
+        <div class="miniList">
+          ${arr.slice(0,3).map(x => `<div><span class="dot"></span>${escapeHtml(x)}</div>`).join("")}
+        </div>
+      `;
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
     if (grid) {
       packages.forEach(p => {
         const el = document.createElement("div");
         el.className = "feature-card";
-        el.style.padding = "14px";
-        el.style.borderRadius = "16px";
+        el.style.borderRadius = "18px";
+
+        if (p.badge) el.classList.add("glow");
+
+        const priceHtml = p.id === "enterprise"
+          ? `<div class="priceMain">Wycena</div><div class="priceSub">${escapeHtml(p.customPriceText || "Cena do ustalenia")}</div>`
+          : `<div class="priceMain">${p.price} PLN</div><div class="priceSub">PSC: ${p.psc} PLN</div>`;
 
         el.innerHTML = `
           <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
-            <b style="font-size:16px">${p.emoji} ${p.label}</b>
+            <div>
+              <b style="font-size:16px">${p.emoji} ${escapeHtml(p.label)}</b>
+              ${p.badge ? `<div style="margin-top:8px"><span class="badge">${escapeHtml(p.badge)}</span></div>` : ``}
+            </div>
             <span class="tag">Pakiet</span>
           </div>
-          <div style="margin-top:8px;color:var(--muted);font-weight:800">${priceLine(p)}</div>
-          <div style="margin-top:10px;color:var(--muted);line-height:1.6">
-            • ${p.features.slice(0,3).join("<br>• ")}${p.features.length > 3 ? "<br>• …" : ""}
+
+          <div class="priceRow">
+            <div>${priceHtml}</div>
           </div>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+
+          ${p.bestFor ? `<div style="margin-top:10px;color:var(--muted);font-weight:800;font-size:13px">${escapeHtml(p.bestFor)}</div>` : ``}
+
+          ${makeHighlightsHTML(p.highlights)}
+
+          <div style="margin-top:12px;color:var(--muted);line-height:1.6">
+            • ${p.features.slice(0,3).map(escapeHtml).join("<br>• ")}${p.features.length > 3 ? "<br>• …" : ""}
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
             <button class="btn" data-details="${p.id}">Szczegóły</button>
             <button class="btn primary" data-order="${p.id}">Zamów</button>
           </div>
@@ -741,12 +845,26 @@
     // ================= DETAILS MODAL =================
     function showDetails(pack){
       selectedPack = pack;
+
       detailsTitle.textContent = `${pack.emoji} Pakiet ${pack.label}`;
       detailsPrice.textContent = priceLine(pack);
+
+      detailsBadgeWrap.innerHTML = pack.badge ? `<span class="badge">${escapeHtml(pack.badge)}</span>` : "";
+
+      detailsMeta.innerHTML = `
+        ${pack.bestFor ? `<div><b style="color:var(--text)">Dla kogo:</b> <span style="color:var(--muted)">${escapeHtml(pack.bestFor)}</span></div>` : ""}
+        ${Array.isArray(pack.highlights) && pack.highlights.length
+          ? `<div style="margin-top:10px"><b style="color:var(--text)">Najważniejsze:</b>
+              <div class="miniList">${pack.highlights.map(x => `<div><span class="dot"></span>${escapeHtml(x)}</div>`).join("")}</div>
+            </div>`
+          : ``}
+      `;
+
       detailsFeatures.innerHTML = `
         <div style="font-weight:900;color:var(--text);margin-bottom:6px">Funkcje</div>
-        <div style="color:var(--muted)">• ${pack.features.join("<br>• ")}</div>
+        <div style="color:var(--muted)">• ${pack.features.map(escapeHtml).join("<br>• ")}</div>
       `;
+
       openModal(modalDetails);
     }
 
@@ -756,10 +874,12 @@
 
       orderStatus.textContent = "";
       orderStatus.className = "hint";
-      fDesc.value = "";
-      hpWebsite.value = "";
+      resetOrderForm();
 
-      orderMeta.textContent = `${pack.emoji} ${pack.label} • ${priceLine(pack)}`;
+      orderTitle.textContent = `Zamówienie — ${pack.emoji} ${pack.label}`;
+      orderMeta.textContent = priceLine(pack);
+      orderBadgeWrap.innerHTML = pack.badge ? `<span class="badge">${escapeHtml(pack.badge)}</span>` : "";
+
       openModal(modalOrder);
     }
 
@@ -785,40 +905,6 @@
       showOrder(selectedPack);
     });
 
-    function getExtra(){
-      return {
-        user: fUser.value.trim(),
-        guild: fGuild.value.trim(),
-        desc: fDesc.value.trim(),
-        deadline: fDeadline.value.trim(),
-      };
-    }
-
-    copyOrderBtn.addEventListener("click", async () => {
-      if (!selectedPack) return;
-
-      // honeypot
-      if ((hpWebsite.value || "").trim().length > 0) {
-        orderStatus.textContent = "⚠️ Wykryto bota. Spróbuj ponownie.";
-        orderStatus.className = "hint warn";
-        return;
-      }
-
-      const extra = getExtra();
-      if ((extra.desc || "").length < 10) {
-        orderStatus.textContent = "⚠️ Opis jest za krótki (min. 10 znaków).";
-        orderStatus.className = "hint warn";
-        return;
-      }
-
-      const text = buildOrderText(selectedPack, extra);
-      const ok = await copyText(text);
-      orderStatus.textContent = ok
-        ? "✅ Skopiowano zamówienie. Możesz wkleić je na Discordzie (DM lub ticket)."
-        : "⚠️ Nie udało się skopiować automatycznie. Skopiuj ręcznie z pola opisu.";
-      orderStatus.className = "hint " + (ok ? "ok" : "warn");
-    });
-
     // ✅ Wyślij webhook -> Cloudflare Pages Functions (/order)
     webhookOrderBtn.addEventListener("click", async () => {
       if (!selectedPack) return;
@@ -838,6 +924,7 @@
       }
 
       try {
+        webhookOrderBtn.disabled = true;
         orderStatus.textContent = "⏳ Wysyłam...";
         orderStatus.className = "hint";
 
@@ -845,9 +932,19 @@
 
         orderStatus.textContent = "✅ Wysłano! Dzięki — odezwę się wkrótce.";
         orderStatus.className = "hint ok";
+
+        // Auto close after a moment
+        setTimeout(() => {
+          closeModal(modalOrder);
+          resetOrderForm();
+          orderStatus.textContent = "";
+          orderStatus.className = "hint";
+        }, 1000);
       } catch (e) {
         orderStatus.textContent = "⚠️ Błąd wysyłki: " + (e?.message || "unknown");
         orderStatus.className = "hint warn";
+      } finally {
+        webhookOrderBtn.disabled = false;
       }
     });
   </script>
